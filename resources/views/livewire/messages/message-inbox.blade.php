@@ -1,8 +1,8 @@
-<div class="h-screen flex">
+<div class="flex h-screen overflow-hidden -m-6 lg:-m-8">
     <!-- Lista de conversaciones -->
-    <div class="w-80 border-r border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 flex flex-col">
+    <div class="w-80 border-r border-gray-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 flex flex-col h-full">
         <!-- Header -->
-        <div class="p-4 border-b border-gray-200 dark:border-zinc-700">
+        <div class="p-4 border-b border-gray-200 dark:border-zinc-700 flex-shrink-0">
             <h2 class="text-xl font-bold text-gray-900 dark:text-white">💌 Mensajes</h2>
             <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">{{ count($conversations) }} conversaciones</p>
         </div>
@@ -42,14 +42,14 @@
     </div>
 
     <!-- Área de chat -->
-    <div class="flex-1 flex flex-col bg-gray-50 dark:bg-zinc-800">
+    <div class="flex-1 flex flex-col bg-gray-50 dark:bg-zinc-800 h-full">
         @if($selectedConversation)
             @php
                 $selected = collect($conversations)->firstWhere('id', $selectedConversation);
             @endphp
             
             <!-- Header del chat -->
-            <div class="p-4 bg-white dark:bg-zinc-900 border-b border-gray-200 dark:border-zinc-700 flex items-center gap-3">
+            <div class="p-4 bg-white dark:bg-zinc-900 border-b border-gray-200 dark:border-zinc-700 flex items-center gap-3 flex-shrink-0">
                 <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-semibold">
                     {{ substr($selected['user']['name'], 0, 1) }}
                 </div>
@@ -114,7 +114,7 @@
             </div>
 
             <!-- Input de mensaje -->
-            <div class="p-4 bg-white dark:bg-zinc-900 border-t border-gray-200 dark:border-zinc-700">
+            <div class="p-4 bg-white dark:bg-zinc-900 border-t border-gray-200 dark:border-zinc-700 flex-shrink-0">
                 <form wire:submit.prevent="sendMessage" class="flex gap-3">
                     <input type="text" 
                            wire:model="messageText"
