@@ -1,63 +1,60 @@
 <x-layouts.app :title="__('Dashboard')">
-    <div class="py-8">
-        <!-- Sección de bienvenida -->
-        <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-lg shadow-lg p-8 mb-8 text-white">
-            <h1 class="text-3xl font-bold mb-2">¡Bienvenido, {{ auth()->user()->name }}!</h1>
-            <p class="text-blue-100">Portal Educativo para Estudiantes de Ciencias de la Salud</p>
+    <div class="py-4 md:py-8">
+        <!-- Sección de bienvenida compacta -->
+        <div class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-lg shadow-lg p-6 mb-6 text-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-black opacity-10"></div>
+            <div class="relative z-10">
+                <h1 class="text-2xl md:text-3xl font-bold mb-1">¡Hola, {{ auth()->user()->name }}! 👋</h1>
+                <p class="text-blue-100 text-sm">🔥 {{ \App\Models\ForumTopic::where('created_at', '>=', now()->subDay())->count() }} nuevos temas hoy • {{ \App\Models\Resource::where('created_at', '>=', now()->subDay())->count() }} recursos agregados</p>
+            </div>
         </div>
 
-        <!-- Estadísticas rápidas -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-6">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 bg-blue-500 rounded-md p-3">
-                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
+        <!-- Estadísticas rápidas animadas -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mb-6">
+            <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-lg p-4 text-white transform hover:scale-105 transition-transform duration-200">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-xs md:text-sm font-medium opacity-90">Recursos</p>
+                        <p class="text-2xl md:text-3xl font-bold">{{ \App\Models\Resource::where('is_approved', true)->count() }}</p>
+                        <p class="text-xs opacity-75 mt-1">📚 Disponibles</p>
                     </div>
-                    <div class="ml-4">
-                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Recursos</p>
-                        <p class="text-2xl font-semibold text-gray-900 dark:text-white">{{ \App\Models\Resource::where('is_approved', true)->count() }}</p>
-                    </div>
+                    <div class="text-4xl opacity-50">📝</div>
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-6">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 bg-green-500 rounded-md p-3">
-                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
+            <div class="bg-gradient-to-br from-green-500 to-green-600 rounded-lg shadow-lg p-4 text-white transform hover:scale-105 transition-transform duration-200">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-xs md:text-sm font-medium opacity-90">Grupos</p>
+                        <p class="text-2xl md:text-3xl font-bold">{{ \App\Models\StudyGroup::where('is_public', true)->count() }}</p>
+                        <p class="text-xs opacity-75 mt-1">👥 Activos</p>
                     </div>
-                    <div class="ml-4">
-                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Grupos</p>
-                        <p class="text-2xl font-semibold text-gray-900 dark:text-white">{{ \App\Models\StudyGroup::where('is_public', true)->count() }}</p>
-                    </div>
+                    <div class="text-4xl opacity-50">🤝</div>
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-6">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 bg-purple-500 rounded-md p-3">
-                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                        </svg>
+            <div class="bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg shadow-lg p-4 text-white transform hover:scale-105 transition-transform duration-200">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-xs md:text-sm font-medium opacity-90">Temas</p>
+                        <p class="text-2xl md:text-3xl font-bold">{{ \App\Models\ForumTopic::count() }}</p>
+                        <p class="text-xs opacity-75 mt-1">💬 Discusiones</p>
                     </div>
-                    <div class="ml-4">
-                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Temas</p>
-                        <p class="text-2xl font-semibold text-gray-900 dark:text-white">{{ \App\Models\ForumTopic::count() }}</p>
-                    </div>
+                    <div class="text-4xl opacity-50">🔥</div>
                 </div>
             </div>
 
-            <div class="bg-white dark:bg-neutral-800 rounded-lg shadow p-6">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 bg-red-500 rounded-md p-3">
-                        <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
+            <div class="bg-gradient-to-br from-pink-500 to-pink-600 rounded-lg shadow-lg p-4 text-white transform hover:scale-105 transition-transform duration-200">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-xs md:text-sm font-medium opacity-90">Eventos</p>
+                        <p class="text-2xl md:text-3xl font-bold">{{ \App\Models\Event::where('start_date', '>=', now())->count() }}</p>
+                        <p class="text-xs opacity-75 mt-1">📅 Próximos</p>
                     </div>
-                    <div class="ml-4">
+                    <div class="text-4xl opacity-50">⚡</div>
+                </div>
+            </div>
+        </div>
                         <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Eventos</p>
                         <p class="text-2xl font-semibold text-gray-900 dark:text-white">{{ \App\Models\Event::where('start_date', '>=', now())->count() }}</p>
                     </div>
@@ -65,79 +62,142 @@
             </div>
         </div>
 
-        <!-- Accesos rápidos -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            <a href="{{ route('resources.index') }}" class="bg-white dark:bg-neutral-800 rounded-lg shadow-md hover:shadow-xl transition-shadow p-6 block">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">📚 Recursos</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Apuntes y materiales</p>
-                    </div>
-                    <svg class="h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                </div>
-            </a>
 
-            <a href="{{ route('forums.index') }}" class="bg-white dark:bg-neutral-800 rounded-lg shadow-md hover:shadow-xl transition-shadow p-6 block">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">💬 Foros</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Debates y dudas</p>
+        <!-- Layout de 2 columnas -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Columna principal - Feed de actividad (2/3) -->
+            <div class="lg:col-span-2 space-y-4">
+                <!-- Noticias destacadas tipo carrusel -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+                    <div class="flex items-center justify-between mb-3">
+                        <h2 class="text-lg font-bold text-gray-900 dark:text-gray-100">⭐ Destacado Ahora</h2>
+                        <a href="{{ route('news.index') }}" class="text-sm text-blue-600 dark:text-blue-400 hover:underline">Ver todas →</a>
                     </div>
-                    <svg class="h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                </div>
-            </a>
-
-            <a href="{{ route('study-groups.index') }}" class="bg-white dark:bg-neutral-800 rounded-lg shadow-md hover:shadow-xl transition-shadow p-6 block">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">👥 Grupos</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Grupos de estudio</p>
+                    
+                    @php
+                        $featuredNews = \App\Models\News::where('is_published', true)
+                            ->where('is_featured', true)
+                            ->latest('published_at')
+                            ->take(3)
+                            ->get();
+                    @endphp
+                    
+                    <div class="space-y-2">
+                        @foreach($featuredNews as $news)
+                            <a href="{{ route('news.show', $news->id) }}" 
+                               class="block p-3 bg-gradient-to-r from-yellow-50 to-orange-50 dark:from-yellow-900/10 dark:to-orange-900/10 
+                                      border-l-4 border-yellow-500 rounded hover:shadow-md transition-all">
+                                <div class="flex items-start gap-3">
+                                    <span class="text-2xl flex-shrink-0">🔥</span>
+                                    <div class="flex-1 min-w-0">
+                                        <h3 class="font-semibold text-gray-900 dark:text-gray-100 line-clamp-1">{{ $news->title }}</h3>
+                                        <p class="text-sm text-gray-600 dark:text-gray-400 line-clamp-1 mt-1">{{ $news->excerpt }}</p>
+                                        <p class="text-xs text-gray-500 dark:text-gray-500 mt-1">{{ $news->published_at->diffForHumans() }}</p>
+                                    </div>
+                                </div>
+                            </a>
+                        @endforeach
                     </div>
-                    <svg class="h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
                 </div>
-            </a>
-
-            <a href="{{ route('calendar.index') }}" class="bg-white dark:bg-neutral-800 rounded-lg shadow-md hover:shadow-xl transition-shadow p-6 block">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">📅 Calendario</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Eventos importantes</p>
+                
+                <!-- Feed de Actividad -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+                    <livewire:activity-feed />
+                </div>
+            </div>
+            
+            <!-- Columna lateral - Accesos rápidos y eventos (1/3) -->
+            <div class="space-y-4">
+                <!-- Accesos rápidos -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-3">⚡ Acceso Rápido</h3>
+                    <div class="space-y-2">
+                        <a href="{{ route('resources.index') }}" 
+                           class="flex items-center gap-3 p-3 rounded-lg bg-blue-50 dark:bg-blue-900/20 hover:bg-blue-100 dark:hover:bg-blue-900/30 transition-colors">
+                            <span class="text-2xl">📚</span>
+                            <div class="flex-1">
+                                <p class="font-semibold text-gray-900 dark:text-gray-100">Recursos</p>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">{{ \App\Models\Resource::where('created_at', '>=', now()->subWeek())->count() }} nuevos esta semana</p>
+                            </div>
+                            <span class="text-blue-600 dark:text-blue-400">→</span>
+                        </a>
+                        
+                        <a href="{{ route('forums.index') }}" 
+                           class="flex items-center gap-3 p-3 rounded-lg bg-purple-50 dark:bg-purple-900/20 hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors">
+                            <span class="text-2xl">💬</span>
+                            <div class="flex-1">
+                                <p class="font-semibold text-gray-900 dark:text-gray-100">Foros</p>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">{{ \App\Models\ForumTopic::where('created_at', '>=', now()->subDay())->count() }} temas hoy</p>
+                            </div>
+                            <span class="text-purple-600 dark:text-purple-400">→</span>
+                        </a>
+                        
+                        <a href="{{ route('study-groups.index') }}" 
+                           class="flex items-center gap-3 p-3 rounded-lg bg-green-50 dark:bg-green-900/20 hover:bg-green-100 dark:hover:bg-green-900/30 transition-colors">
+                            <span class="text-2xl">👥</span>
+                            <div class="flex-1">
+                                <p class="font-semibold text-gray-900 dark:text-gray-100">Grupos</p>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">Únete a la comunidad</p>
+                            </div>
+                            <span class="text-green-600 dark:text-green-400">→</span>
+                        </a>
+                        
+                        <a href="{{ route('calendar.index') }}" 
+                           class="flex items-center gap-3 p-3 rounded-lg bg-orange-50 dark:bg-orange-900/20 hover:bg-orange-100 dark:hover:bg-orange-900/30 transition-colors">
+                            <span class="text-2xl">📅</span>
+                            <div class="flex-1">
+                                <p class="font-semibold text-gray-900 dark:text-gray-100">Calendario</p>
+                                <p class="text-xs text-gray-600 dark:text-gray-400">{{ \App\Models\Event::where('start_date', '>=', now())->where('start_date', '<=', now()->addWeek())->count() }} eventos esta semana</p>
+                            </div>
+                            <span class="text-orange-600 dark:text-orange-400">→</span>
+                        </a>
                     </div>
-                    <svg class="h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
                 </div>
-            </a>
-
-            <a href="{{ route('news.index') }}" class="bg-white dark:bg-neutral-800 rounded-lg shadow-md hover:shadow-xl transition-shadow p-6 block">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">📰 Noticias</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Novedades</p>
+                
+                <!-- Eventos próximos -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-gray-100 mb-3">📅 Próximos Eventos</h3>
+                    
+                    @php
+                        $upcomingEvents = \App\Models\Event::where('start_date', '>=', now())
+                            ->orderBy('start_date')
+                            ->take(5)
+                            ->get();
+                    @endphp
+                    
+                    <div class="space-y-2">
+                        @forelse($upcomingEvents as $event)
+                            <div class="p-3 rounded-lg border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow">
+                                <div class="flex gap-3">
+                                    <div class="flex-shrink-0 w-12 h-12 rounded-lg flex flex-col items-center justify-center text-white text-xs font-bold"
+                                         style="background-color: {{ $event->color }}">
+                                        <span>{{ $event->start_date->format('d') }}</span>
+                                        <span class="text-[10px] opacity-75">{{ $event->start_date->format('M') }}</span>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <h4 class="font-semibold text-sm text-gray-900 dark:text-gray-100 line-clamp-1">{{ $event->title }}</h4>
+                                        <p class="text-xs text-gray-600 dark:text-gray-400 mt-1">
+                                            {{ $event->start_date->format('H:i') }} • {{ $event->location }}
+                                        </p>
+                                        <p class="text-xs text-gray-500 dark:text-gray-500 mt-0.5">
+                                            {{ $event->start_date->diffForHumans() }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        @empty
+                            <p class="text-sm text-gray-500 dark:text-gray-400 text-center py-4">No hay eventos próximos</p>
+                        @endforelse
                     </div>
-                    <svg class="h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
                 </div>
-            </a>
-
-            <a href="{{ route('profile.edit') }}" class="bg-white dark:bg-neutral-800 rounded-lg shadow-md hover:shadow-xl transition-shadow p-6 block">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">👤 Perfil</h3>
-                        <p class="text-gray-600 dark:text-gray-400 text-sm">Información personal</p>
-                    </div>
-                    <svg class="h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
+                
+                <!-- Banner motivacional -->
+                <div class="bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg shadow-md p-6 text-white text-center">
+                    <p class="text-3xl mb-2">💪</p>
+                    <p class="font-bold text-lg">¡Sigue así!</p>
+                    <p class="text-sm opacity-90 mt-1">Tu dedicación te llevará lejos</p>
                 </div>
-            </a>
+            </div>
         </div>
     </div>
 </x-layouts.app>

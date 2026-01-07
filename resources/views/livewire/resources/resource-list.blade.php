@@ -48,9 +48,20 @@
                 <div class="p-6">
                     <div class="flex items-start justify-between mb-4">
                         <div class="flex-1">
-                            <span class="inline-block px-2 py-1 text-xs rounded-full bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 mb-2">
-                                {{ ucfirst($resource->type) }}
-                            </span>
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="inline-block px-2 py-1 text-xs rounded-full bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200">
+                                    {{ ucfirst($resource->type) }}
+                                </span>
+                                @if($resource->created_at->isToday())
+                                    <span class="inline-block px-2 py-1 text-xs font-bold rounded-full bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 animate-pulse">
+                                        ✨ NUEVO
+                                    </span>
+                                @elseif($resource->created_at->gt(now()->subDays(3)))
+                                    <span class="inline-block px-2 py-1 text-xs font-bold rounded-full bg-yellow-100 dark:bg-yellow-900 text-yellow-800 dark:text-yellow-200">
+                                        🔥 POPULAR
+                                    </span>
+                                @endif
+                            </div>
                             <h3 class="text-lg font-semibold text-gray-900 dark:text-white line-clamp-2">
                                 {{ $resource->title }}
                             </h3>
@@ -76,11 +87,14 @@
                                 {{ $resource->career }}
                             </div>
                         @endif
-                        <div class="flex items-center">
-                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                            </svg>
-                            {{ $resource->downloads }} descargas
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                </svg>
+                                {{ $resource->downloads }} descargas
+                            </div>
+                            <span class="text-xs text-gray-400">{{ $resource->created_at->diffForHumans() }}</span>
                         </div>
                     </div>
 

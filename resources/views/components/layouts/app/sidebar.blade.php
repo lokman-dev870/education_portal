@@ -126,6 +126,9 @@
             </flux:dropdown>
         </flux:header>
 
+        <!-- Notificaciones en vivo -->
+        <livewire:live-notifications />
+
         {{ $slot }}
 
         @fluxScripts

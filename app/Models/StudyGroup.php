@@ -31,6 +31,11 @@ class StudyGroup extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     public function members(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'study_group_members')
