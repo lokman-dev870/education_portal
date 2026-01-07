@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Portal Educativo - Aprende, Colabora, Crece</title>
+@auth
+    <script>window.location.href = "{{ url('/dashboard') }}";</script>
+@else
+    <script>window.location.href = "{{ route('login') }}";</script>
+@endauth
 
         <link rel="icon" href="/favicon.ico" sizes="any">
         <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -51,76 +49,56 @@
             @endif
         </header>
         <div class="flex items-center justify-center w-full transition-opacity opacity-100 duration-750 lg:grow starting:opacity-0">
-            <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row">
-                <div class="text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-es-lg rounded-ee-lg lg:rounded-ss-lg lg:rounded-ee-none">
+            <main class="flex max-w-[335px] w-full flex-col-reverse lg:max-w-4xl lg:flex-row gap-6">
+                <div class="text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-lg">
                     <h1 class="mb-1 font-medium text-xl" style="color: #2563eb;">Portal Educativo</h1>
                     <p class="mb-4 text-[#706f6c] dark:text-[#A1A09A] text-base">Tu plataforma completa para aprender, colaborar y crecer. Accede a recursos educativos, conecta con otros estudiantes y alcanza tus metas académicas.</p>
-                    <ul class="flex flex-col mb-4 lg:mb-6">
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:top-1/2 before:bottom-0 before:left-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#2563eb] dark:bg-[#60a5fa] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5">
-                                    <span class="rounded-full bg-white w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
+                    
+                    <ul class="flex flex-col mb-4 lg:mb-6 space-y-3">
+                        <li class="flex items-center gap-3">
+                            <span class="text-2xl">📚</span>
                             <span class="text-sm">
-                                📚 Accede a miles de <strong style="color: #2563eb;">recursos educativos</strong> organizados por temas
+                                Accede a miles de <strong style="color: #2563eb;">recursos educativos</strong> organizados por temas
                             </span>
                         </li>
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:bottom-1/2 before:top-0 before:start-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#10b981] dark:bg-[#34d399] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5">
-                                    <span class="rounded-full bg-white w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
+                        <li class="flex items-center gap-3">
+                            <span class="text-2xl">👥</span>
                             <span class="text-sm">
-                                👥 Únete a <strong style="color: #10b981;">grupos de estudio</strong> y foros de discusión
+                                Únete a <strong style="color: #10b981;">grupos de estudio</strong> y foros de discusión
                             </span>
                         </li>
-                        <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:bottom-1/2 before:top-0 before:start-[0.4rem] before:absolute">
-                            <span class="relative py-1 bg-white dark:bg-[#161615]">
-                                <span class="flex items-center justify-center rounded-full bg-[#8b5cf6] dark:bg-[#a78bfa] shadow-[0px_0px_1px_0px_rgba(0,0,0,0.03),0px_1px_2px_0px_rgba(0,0,0,0.06)] w-3.5 h-3.5">
-                                    <span class="rounded-full bg-white w-1.5 h-1.5"></span>
-                                </span>
-                            </span>
+                        <li class="flex items-center gap-3">
+                            <span class="text-2xl">📅</span>
                             <span class="text-sm">
-                                📅 Organiza tu tiempo con nuestro <strong style="color: #8b5cf6;">calendario académico</strong>
+                                Organiza tu tiempo con nuestro <strong style="color: #8b5cf6;">calendario académico</strong>
+                            </span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="text-2xl">🚀</span>
+                            <span class="text-sm">
+                                <strong style="color: #f59e0b;">Despliega tu instancia</strong> fácilmente en la nube
                             </span>
                         </li>
                     </ul>
-                    <ul class="flex gap-3 text-sm leading-normal">
-                        <li>
+                    
+                    <div class="flex flex-col gap-3 mt-6">
+                        <div class="flex gap-3 text-sm leading-normal">
                             <a href="{{ route('login') }}" class="inline-block px-5 py-2 bg-[#2563eb] hover:bg-[#1e40af] rounded-lg text-white font-medium shadow-lg transition-all">
                                 Comenzar Ahora
                             </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('register') }}" class="inline-block px-5 py-2 bg-white dark:bg-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-700 rounded-lg border-2 border-[#2563eb] text-[#2563eb] font-medium transition-all">
+                            <a href="{{ route('register') }}" class="inline-block px-5 py-2 bg-white dark:bg-zinc-800 hover:bg-zinc-50 dark:hover:bg-zinc-700 rounded-lg border-2 border-[#2563eb] text-[#2563eb] dark:text-[#60a5fa] font-medium transition-all">
                                 Registrarse Gratis
                             </a>
-                        </li>
-                    </ul>
-                </div>
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        class="w-2.5 h-2.5"
-                                    >
-                                        <path
-                                            d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
-                                            stroke="currentColor"
-                                            stroke-linecap="square"
-                                        />
-                                    </svg>
-                                </a>
-                            </span>
-                        </li>
-                    </ul>
-                    <ul class="flex gap-3 text-sm leading-normal">
-                        <li>
-                            <a href="https://cloud.laravel.com" target="_blank" class="inline-block dark:bg-[#eeeeec] dark:border-[#eeeeec] dark:text-[#1C1C1A] dark:hover:bg-white dark:hover:border-white hover:bg-black hover:border-black px-5 py-1.5 bg-[#1b1b18] rounded-sm border border-black text-white text-sm leading-normal">
-                                Deploy now
+                        </div>
+                        <div class="flex gap-3 text-sm leading-normal pt-2 border-t border-[#e3e3e0] dark:border-[#3E3E3A]">
+                            <a href="https://github.com" target="_blank" class="inline-block px-5 py-2 bg-[#1b1b18] dark:bg-[#eeeeec] hover:bg-black dark:hover:bg-white rounded-lg border border-black dark:border-[#eeeeec] text-white dark:text-[#1C1C1A] font-medium transition-all">
+                                Deploy Now
                             </a>
-                        </li>
-                    </ul>
+                            <a href="https://github.com" target="_blank" class="inline-block px-5 py-2 bg-transparent hover:bg-zinc-50 dark:hover:bg-zinc-800 rounded-lg border-2 border-zinc-300 dark:border-zinc-600 text-zinc-700 dark:text-zinc-300 font-medium transition-all">
+                                Ver en GitHub
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 <div class="bg-gradient-to-br from-blue-50 to-green-50 dark:bg-gradient-to-br dark:from-blue-950 dark:to-green-950 relative lg:-ms-px -mb-px lg:mb-0 rounded-t-lg lg:rounded-t-none lg:rounded-e-lg! aspect-[335/376] lg:aspect-auto w-full lg:w-[438px] shrink-0 overflow-hidden flex items-center justify-center p-8">
                     {{-- Portal Educativo Icon --}}
