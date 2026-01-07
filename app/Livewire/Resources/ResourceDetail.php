@@ -20,6 +20,12 @@ class ResourceDetail extends Component
 
     public function download()
     {
+        // Check if file exists
+        if (!Storage::disk('public')->exists($this->resource->file_path)) {
+            session()->flash('error', 'El archivo no está disponible. Este es un recurso de demostración.');
+            return;
+        }
+
         $this->resource->incrementDownloads();
         return Storage::disk('public')->download($this->resource->file_path, $this->resource->file_name);
     }

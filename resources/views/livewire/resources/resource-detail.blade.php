@@ -5,6 +5,12 @@
         </a>
     </div>
 
+    @if (session()->has('error'))
+        <div class="mb-6 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+            <span class="block sm:inline">{{ session('error') }}</span>
+        </div>
+    @endif
+
     <div class="bg-white dark:bg-neutral-800 rounded-lg shadow-lg p-8 mb-6">
         <!-- Información principal -->
         <div class="flex items-start justify-between mb-6">
