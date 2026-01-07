@@ -2,6 +2,20 @@
     <div class="flex flex-col gap-6">
         <x-auth-header :title="__('Log in to your account')" :description="__('Enter your email and password below to log in')" />
 
+        <!-- Usuario de Prueba -->
+        <div class="bg-gradient-to-r from-blue-50 to-green-50 dark:from-blue-950 dark:to-green-950 border-2 border-blue-200 dark:border-blue-800 rounded-lg p-4">
+            <div class="flex items-start gap-3">
+                <div class="text-2xl">🎓</div>
+                <div class="flex-1">
+                    <h3 class="text-sm font-semibold text-blue-900 dark:text-blue-100 mb-1">Usuario de Prueba</h3>
+                    <div class="space-y-1 text-xs text-blue-700 dark:text-blue-300">
+                        <p><strong>Email:</strong> <code class="bg-white dark:bg-zinc-800 px-2 py-0.5 rounded">admin@portal.com</code></p>
+                        <p><strong>Password:</strong> <code class="bg-white dark:bg-zinc-800 px-2 py-0.5 rounded">password</code></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Session Status -->
         <x-auth-session-status class="text-center" :status="session('status')" />
 
