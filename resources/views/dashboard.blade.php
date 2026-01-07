@@ -1,11 +1,11 @@
 <x-layouts.app :title="__('Dashboard')">
     <div class="py-4 md:py-8">
-        <!-- Sección de bienvenida compacta -->
-        <div class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-lg shadow-lg p-6 mb-6 text-white relative overflow-hidden">
+        <!-- Sección de bienvenida Portal Educativo -->
+        <div class="bg-gradient-to-r from-blue-600 to-green-600 rounded-lg shadow-lg p-6 mb-6 text-white relative overflow-hidden">
             <div class="absolute inset-0 bg-black opacity-10"></div>
             <div class="relative z-10">
                 <h1 class="text-2xl md:text-3xl font-bold mb-1">¡Hola, {{ auth()->user()->name }}! 👋</h1>
-                <p class="text-blue-100 text-sm">🔥 {{ \App\Models\ForumTopic::where('created_at', '>=', now()->subDay())->count() }} nuevos temas hoy • {{ \App\Models\Resource::where('created_at', '>=', now()->subDay())->count() }} recursos agregados</p>
+                <p class="text-blue-50 text-sm">🚀 Bienvenido a Portal Educativo • {{ \App\Models\ForumTopic::where('created_at', '>=', now()->subDay())->count() }} nuevos temas hoy • {{ \App\Models\Resource::where('created_at', '>=', now()->subDay())->count() }} recursos frescos</p>
             </div>
         </div>
 

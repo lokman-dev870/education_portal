@@ -23,16 +23,28 @@
     --color-zinc-900: #171717;
     --color-zinc-950: #0a0a0a;
 
-    --color-accent: var(--color-neutral-800);
-    --color-accent-content: var(--color-neutral-800);
+    /* Portal Educativo - Colores de marca */
+    --color-primary: #2563eb; /* Azul educativo vibrante */
+    --color-primary-dark: #1e40af;
+    --color-primary-light: #60a5fa;
+    --color-secondary: #10b981; /* Verde éxito/conocimiento */
+    --color-secondary-dark: #059669;
+    --color-secondary-light: #34d399;
+    --color-accent: #8b5cf6; /* Morado creatividad */
+    --color-accent-dark: #7c3aed;
+    --color-warning: #f59e0b; /* Amarillo atención */
+    --color-info: #06b6d4; /* Cyan información */
+
+    --color-accent: var(--color-primary);
+    --color-accent-content: var(--color-primary);
     --color-accent-foreground: var(--color-white);
 }
 
 @layer theme {
     .dark {
-        --color-accent: var(--color-white);
-        --color-accent-content: var(--color-white);
-        --color-accent-foreground: var(--color-neutral-800);
+        --color-accent: var(--color-primary-light);
+        --color-accent-content: var(--color-primary-light);
+        --color-accent-foreground: var(--color-neutral-950);
     }
 }
 
