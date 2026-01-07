@@ -55,13 +55,6 @@
                 </div>
             </div>
         </div>
-                        <p class="text-sm font-medium text-gray-500 dark:text-gray-400">Eventos</p>
-                        <p class="text-2xl font-semibold text-gray-900 dark:text-white">{{ \App\Models\Event::where('start_date', '>=', now())->count() }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
         <!-- Layout de 2 columnas -->
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -101,9 +94,7 @@
                 </div>
                 
                 <!-- Feed de Actividad -->
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
-                    <livewire:activity-feed />
-                </div>
+                <livewire:activity-feed />
             </div>
             
             <!-- Columna lateral - Accesos rápidos y eventos (1/3) -->

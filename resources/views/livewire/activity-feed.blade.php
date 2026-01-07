@@ -1,6 +1,5 @@
-<div>
-    <div class="space-y-3">
-        <div class="flex items-center justify-between mb-4">
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 space-y-3">
+    <div class="flex items-center justify-between mb-4">
             <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">
                 🔥 Actividad Reciente
             </h3>
@@ -77,7 +76,6 @@
                 @endforeach
             </div>
         @endif
-    </div>
 
     <style>
         .custom-scrollbar::-webkit-scrollbar {
