@@ -37,6 +37,11 @@ jobs:
       - name: Build assets
         run: npm run build
 
+      - name: Copy build to automata.pe repository
+        run: |
+          mkdir -p ../automata.pe/education_portal
+          cp -r public/build ../automata.pe/education_portal/
+
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
