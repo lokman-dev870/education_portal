@@ -4,6 +4,10 @@
         @include('partials.head')
     </head>
     <body class="min-h-screen bg-white dark:bg-zinc-800">
+        @php
+            $newMessagesCount = 5;
+        @endphp
+        
         <flux:sidebar sticky stashable class="border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
             <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
 
@@ -23,6 +27,14 @@
                     <flux:navlist.item :href="route('calendar.index')" :current="request()->routeIs('calendar.*')" wire:navigate>📅 Calendario</flux:navlist.item>
                     <flux:navlist.item :href="route('news.index')" :current="request()->routeIs('news.*')" wire:navigate>📰 Noticias</flux:navlist.item>
                     <flux:navlist.item :href="route('search')" :current="request()->routeIs('search')" wire:navigate>🔍 Buscar</flux:navlist.item>
+                    <flux:navlist.item :href="route('messages.index')" :current="request()->routeIs('messages.*')" wire:navigate>
+                        <div class="flex items-center justify-between w-full">
+                            <span>💌 Mensajes</span>
+                            @if($newMessagesCount > 0)
+                                <span class="ml-2 px-2 py-0.5 text-xs font-bold text-white bg-red-500 rounded-full animate-pulse">{{ $newMessagesCount }}</span>
+                            @endif
+                        </div>
+                    </flux:navlist.item>
                 </flux:navlist.group>
             </flux:navlist>
 
@@ -146,33 +158,6 @@
             <!-- Sidebar derecho fijo -->
             <aside class="hidden xl:block w-80 border-l border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 overflow-y-auto flex-shrink-0">
                 <div class="p-4 space-y-4">
-                    <!-- Usuarios activos -->
-                    <div>
-                        <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center gap-2">
-                            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                            Usuarios Activos
-                        </h3>
-                        <div class="space-y-2">
-                            @php
-                                $activeUsers = \App\Models\User::latest('updated_at')->take(8)->get();
-                            @endphp
-                            @foreach($activeUsers as $user)
-                                <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors cursor-pointer">
-                                    <div class="relative">
-                                        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-semibold text-sm">
-                                            {{ substr($user->name, 0, 1) }}
-                                        </div>
-                                        <span class="absolute bottom-0 right-0 w-3 h-3 bg-green-500 border-2 border-white dark:border-zinc-900 rounded-full"></span>
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <p class="text-sm font-medium text-gray-900 dark:text-gray-100 truncate">{{ $user->name }}</p>
-                                        <p class="text-xs text-gray-500 dark:text-gray-400">Activo ahora</p>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                    
                     <!-- Tendencias -->
                     <div class="pt-4 border-t border-gray-200 dark:border-zinc-700">
                         <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-3 flex items-center gap-2">

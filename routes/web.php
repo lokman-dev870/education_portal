@@ -50,8 +50,9 @@ Route::middleware(['auth'])->group(function () {
     // Noticias
     Route::get('/news', App\Livewire\News\NewsList::class)->name('news.index');
     Route::get('/news/{id}', App\Livewire\News\NewsDetail::class)->name('news.show');
-    
-    // Búsqueda
+        // Mensajes
+    Route::get('/messages', App\Livewire\Messages\MessageInbox::class)->name('messages.index');
+        // Búsqueda
     Route::get('/search', App\Livewire\Search\GlobalSearch::class)->name('search');
     
     // Perfil de estudiante
