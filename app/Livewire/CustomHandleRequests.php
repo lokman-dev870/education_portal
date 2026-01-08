@@ -40,6 +40,6 @@ class CustomHandleRequests extends HandleRequests
     {
         return $this->shouldUseSubdirectory() 
             ? '/education_portal/livewire/update' 
-            : '/livewire/update';
+            : '/2livewire/update';
     }
 }
